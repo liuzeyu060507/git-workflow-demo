@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>问候语生成器</title>
+  <style>
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #eef3fa; font-family: system-ui, sans-serif; color: #20304a; }
+    main { box-sizing: border-box; width: min(440px, 90vw); padding: 32px; background: white; border-radius: 16px; box-shadow: 0 12px 36px #20304a18; }
+    h1 { margin-top: 0; font-size: 26px; }
+    label { display: block; margin-bottom: 8px; }
+    input { box-sizing: border-box; width: 100%; padding: 12px; border: 1px solid #b6c3d6; border-radius: 8px; font-size: 16px; }
+    button { margin-top: 16px; width: 100%; padding: 12px; border: 0; border-radius: 8px; color: white; background: #2458d3; font-size: 16px; cursor: pointer; }
+    #result { min-height: 28px; line-height: 1.7; }
+    small { color: #66758a; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>问候语生成器</h1>
+    <form id="greeting-form">
+      <label for="name">你的名字</label>
+      <input id="name" type="text" placeholder="请输入名字" autocomplete="off">
+      <button type="submit">生成问候语</button>
+    </form>
+    <p id="result" aria-live="polite">输入名字，试试看。</p>
+    <small>Git 团队协作工作流演示项目</small>
+  </main>
+  <script>
+    function greet(name) {
+      return `你好，${name}！`;
+    }
+
+    document.getElementById("greeting-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      document.getElementById("result").textContent = greet(name);
+    });
+  </script>
+</body>
+</html>
